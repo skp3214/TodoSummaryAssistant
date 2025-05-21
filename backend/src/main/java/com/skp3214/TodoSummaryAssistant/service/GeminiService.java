@@ -32,7 +32,8 @@ public class GeminiService {
             return Mono.just("No pending tasks to summarize.");
         }
 
-        String promptText = "Summarize the following to-do items \n" +
+        String promptText = "summarize the to-do list meaningfully — don’t simulate or mock" +
+                "this. Use don't use asteriks to bold it but you can use emojis and tell hey you have these thing pending to do it. \n" +
                 todoTasks.stream().map(task -> "- " + task).collect(Collectors.joining("\n"));
 
         JsonObject requestBody = getJsonObject(systemInstruction, promptText);
